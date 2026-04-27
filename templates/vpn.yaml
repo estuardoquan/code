@@ -1,0 +1,22 @@
+services:
+    wg:
+        image: lscr.io/linuxserver/wireguard:latest
+        environment:
+            PUID: $VPN_PUID
+            PGID: $VPN_PGID
+            TZ: $VPN_TZ
+            SERVERURL: $VPN_SERVERURL
+            SERVERPORT: $VPN_SERVERPORT
+            PEERS: $VPN_PEERS
+            PEERDNS: $VPN_PEERDNS
+            INTERNAL_SUBNET: $VPN_INTERNAL_SUBNET
+            ALLOWEDIPS: $VPN_ALLOWEDIPS
+            PERSISTENTKEEPALIVE_PEERS: $VPN_PERSISTENTKEEPALIVE_PEERS
+            LOG_CONFS: $VPN_LOG_CONFS
+        sysctls:
+            - net.ipv4.ip_forward=1
+            - net.ipv4.conf.all.src_valid_mark=1
+        cap_add:
+            - NET_ADMIN
+            - SYS_MODULE
+

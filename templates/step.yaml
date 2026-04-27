@@ -1,0 +1,22 @@
+services:
+    ca:
+        image: smallstep/step-ca:latest
+        environment:
+            STEPPATH: $CA_STEPPATH
+            DOCKER_STEPCA_INIT_NAME: $CA_DOCKER_STEPCA_INIT_NAME
+            DOCKER_STEPCA_INIT_DNS_NAMES: $CA_DOCKER_STEPCA_INIT_DNS_NAMES
+            DOCKER_STEPCA_INIT_ADDRESS: $CA_DOCKER_STEPCA_INIT_ADDRESS
+    crt:
+        image: dqio/crtpatch:latest
+        environment:
+            STEP_INIT_NAME: $CRT_STEP_INIT_NAME
+            STEP_INIT_DNS: $CRT_STEP_INIT_DNS
+            STEP_INIT_SAN: $CRT_STEP_INIT_SAN
+            STEP_CA_URL: $CRT_STEP_CA_URL
+            STEP_FINGERPRINT: $CRT_STEP_FINGERPRINT
+            STEP_KID: $CRT_STEP_KID
+            STEP_RENEW_PERIOD: $CRT_STEP_RENEW_PERIOD
+            STEP_PROVISIONER_PASSWORD_FILE: /run/secrets/provisioner_password
+        secrets:
+            - provisioner_password
+

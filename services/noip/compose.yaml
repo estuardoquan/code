@@ -1,0 +1,11 @@
+networks:
+    local:
+        driver: bridge
+services:
+    duc:
+        extends:
+            file: $TEMPLATE_NOIP
+            service: duc
+        networks:
+            - local 
+        restart: unless-stopped

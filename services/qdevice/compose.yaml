@@ -1,0 +1,17 @@
+networks:
+    local:
+        driver: bridge 
+volumes:
+    corosync:
+        driver: local
+services:
+    corosync:
+        extends:
+            file: $TEMPLATE_QDEVICE
+            service: corosync
+        volumes:
+            - corosync:/etc/corosync/qnetd
+        networks:
+            - local
+        restart: unless-stopped
+

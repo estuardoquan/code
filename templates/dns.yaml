@@ -1,0 +1,17 @@
+services:
+    pihole:
+        image: pihole/pihole:latest
+        environment:
+            TZ: $PIHOLE_TZ
+            FTLCONF_webserver_api_password: $PIHOLE_FTLCONF_PASSWORD
+            FTLCONF_dns_listeningMode: $PIHOLE_FTLCONF_DNS_LISTEN
+        cap_add:
+            - NET_ADMIN
+            - SYS_TIME
+            - SYS_NICE
+    bind9:
+        image: ubuntu/bind9:latest
+        environment:
+            BIND9_USER: $BIND9_USER
+
+

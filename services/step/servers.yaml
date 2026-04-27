@@ -1,0 +1,12 @@
+- server:
+    port: 443
+    domain:
+        subject: certs.pi.inet
+    https: /var/local/step
+    log: /var/log/nginx
+    locations:
+        - type: proxy_pass
+          value: http://webdav
+          include: /etc/nginx/includes/default.proxy.conf
+    redirect: 80
+

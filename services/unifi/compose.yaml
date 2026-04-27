@@ -1,0 +1,31 @@
+networks:
+    local:
+        driver: bridge
+volumes:
+    db:
+        drvier: local
+    config:
+        driver: local
+services:
+    db:
+        extends:
+            file: $TEMPLATE_UNIFI
+            service: mongo
+        volumes:
+            - db:/data/db
+            - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
+        networks:
+            - local
+        restart: unless-stopped
+    console:
+        extends:
+            file: $TEMPLATE_UNIFI
+            service: console
+        networks:
+            console: {}
+        volumes:
+            - src:/config
+        depends_on:
+            - db
+        restart: unless-stopped
+

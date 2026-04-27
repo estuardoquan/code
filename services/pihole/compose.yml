@@ -1,0 +1,21 @@
+networks:
+    local:
+        driver: bridge
+volumes:
+    src:
+        driver: local
+services:
+    pihole:
+        extends:
+            file: $TEMPLATE_PIHOLE
+            service: pihole
+        volumes:
+            - src:/etc/pihole
+            # - ./etc-dnsmasq.d:/etc/dnsmasq.d
+        networks:
+            - local
+        ports:
+            - "53/tcp"
+            - "53/udp"
+            - "80/tcp"
+            - "443/tcp"

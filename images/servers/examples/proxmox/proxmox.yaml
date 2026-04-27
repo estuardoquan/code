@@ -1,0 +1,11 @@
+- server:
+      port: 443
+      domain:
+          subject: terra.pve.local
+      https: /var/local/step
+      log: /var/log/nginx
+      locations:
+          - type: proxy_pass
+            value: https://10.0.50.100:8006
+            include: /etc/nginx/includes/default.proxy.conf
+      redirect: 80

@@ -1,0 +1,12 @@
+networks:
+    local:
+        driver: local 
+services:
+    socks5:
+        extends:
+            file: $TEMPLATE_TOR
+            service: socks5
+        networks:
+            - local
+        restart: unless-stopped
+

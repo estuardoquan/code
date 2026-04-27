@@ -1,0 +1,16 @@
+networks:
+    local:
+        driver: bridge
+volumes:
+    certbot:
+        driver: local
+services:
+    certbot:
+        extends:
+            file: $TEMPLATE_LETSENCRYPT
+            service: certbot_route53
+        volumes:
+            - certbot:/etc/letsencrypt
+        networks:
+            - local
+        restart: unless-stopped

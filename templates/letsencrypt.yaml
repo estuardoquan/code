@@ -1,0 +1,11 @@
+services:
+    certbot_route53:
+        image: dqio/certbot-route53:latest
+        environment:
+            AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+            AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+            AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+            CERTBOT_DOMAIN: $CERTBOT_DOMAIN
+            CERTBOT_WILDCARD: $CERTBOT_WILDCARD
+            CERTBOT_STAGING: $CERTBOT_STAGING
+

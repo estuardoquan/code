@@ -1,0 +1,23 @@
+networks:
+    ipvlan16:
+        external: true
+        name: ipvlan16
+volumes:
+    config:
+        driver: local
+        driver_opts:
+            type: nfs
+            o: "addr=$NAS_ADDRESS,rw,nolock,soft,nfsvers=4"
+            device: "$NAS_WIREGUARD_CONFIG"
+services:
+    vpn:
+        extends:
+            file: $TEMPLATE_VPN
+            service: wg
+        volumes:
+            - config:/config
+        networks:
+            ipvlan16:
+                ipv4_address: $VPN_IPVLAN16_ADDRESS
+        restart: unless-stopped
+      

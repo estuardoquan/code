@@ -1,0 +1,20 @@
+services:
+    app:
+        image: dqio/node:latest
+        environment:
+            VITECONFIG_HMR_HOST: $APP_VITECONFIG_HMR_HOST
+            VITECONFIG_HMR_CLIENTPORT: 443
+            VITECONFIG_STEPPATH: /var/local/step
+        volumes:
+            - $HOST_STEPPATH:/var/local/step:ro
+            - ./app:/home/node/app
+    php:
+        image: dqio/node:latest
+        environment:
+            VITECONFIG_HMR_HOST: $PHP_VITECONFIG_HMR_HOST
+            VITECONFIG_HMR_CLIENTPORT: 443
+            VITECONFIG_STEPPATH: /var/local/step
+        volumes:
+            - $HOST_STEPPATH:/var/local/step:ro
+            - ./api:/home/node/app
+

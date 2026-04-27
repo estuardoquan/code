@@ -1,0 +1,9 @@
+services:
+    duc:
+        image: dqio/noip:latest
+        environment:
+          NOIP_HOSTNAMES: $DDNS_NOIP_HOSTNAMES
+          NOIP_PASSWORD: $DDNS_NOIP_PASSWORD
+          NOIP_USERNAME: $DDNS_NOIP_USERNAME
+          NOIP_CHECK_INTERVAL: $DDNS_NOIP_CHECK_INTERVAL
+
