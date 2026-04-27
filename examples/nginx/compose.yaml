@@ -2,10 +2,10 @@ networks:
     local:
         driver: bridge
 services:
-    proxy:
+    server:
         extends:
-            file: $TEMPLATE_SERVERS
-            service: server 
+            file: $TEMPLATE_SERVER
+            service: nginx
         volumes:
             - ./servers.yaml:/etc/nginx/yaml/servers.yaml
         networks:
