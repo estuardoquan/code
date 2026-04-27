@@ -1,0 +1,17 @@
+networks:
+    local:
+        driver: bridge
+volumes:
+    config:
+        driver: local
+services:
+    vpn:
+        extends:
+            file: $TEMPLATE_VPN
+            service: wg
+        volumes:
+            - config:/config
+        networks:
+            - local
+        restart: unless-stopped
+      

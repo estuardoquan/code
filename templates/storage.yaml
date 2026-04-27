@@ -1,0 +1,9 @@
+services:
+    minio:
+        image: dqio/minio:latest
+        environment:
+            MINIO_ROOT_USER: $STORAGE_MINIO_ROOT_USER
+            MINIO_ROOT_PASSWORD: $STORAGE_MINIO_ROOT_PASSWORD
+            MINIO_BROWSER_REDIRECT_URL: $STORAGE_MINIO_BROWSER_REDIRECT_URL
+
+

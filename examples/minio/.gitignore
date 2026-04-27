@@ -1,5 +1,3 @@
-/src
-
 # local env files
 .env
 .env.backup

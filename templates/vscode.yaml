@@ -1,0 +1,12 @@
+services:
+    code_server:
+        image: lscr.io/linuxserver/code-server:latest
+        working_dir: /config/workspace
+        environment:
+            PUID: $APP_PUID
+            PGID: $APP_PGID
+            TZ: $APP_TZ
+            HASHED_PASSWORD: $APP_HASHED_PASSWORD
+            SUDO_PASSWORD_HASH: $APP_SUDO_PASSWORD_HASH
+            DEFAULT_WORKSPACE: $APP_DEFAULT_WORKSPACE
+
