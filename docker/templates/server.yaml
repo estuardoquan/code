@@ -1,0 +1,7 @@
+services:
+   nginx:
+        image: dqio/servers:latest
+        environment:
+            SERVER_YAML: $NGINX_SERVER_YAML
+            SERVER_WATCH_CRT: $NGINX_SERVER_WATCH_CRT
+
