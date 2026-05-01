@@ -1,0 +1,59 @@
+resource "proxmox_vm_qemu" "f43_srv_0" {
+        name = "f43-srv-0"
+        description = "Fedora Server 43"
+        vmid = "300"
+        target_node = ""
+
+        bios = "ovmf"
+        agent = 1
+        clone = "f43-clean"
+        memory = 4092
+        scsihw = "virtio-scsi-pci"
+        automatic_reboot = true
+        
+        cpu {
+            sockets = 1
+            cores = 4
+        }
+
+        network {
+            id = 0
+            model  = "virtio"
+            bridge = "vmbr0"
+        }
+        
+        disks {
+            scsi {
+                scsi0 {
+                    disk {
+                        storage = ""
+                        size    = "50G" 
+                    }
+                }
+            }
+            ide {
+                ide0 {
+                    cloudinit {
+                        storage = ""
+                    }
+                }
+            }
+        }
+
+        efidisk {
+            storage = ""
+            efitype = "4m" 
+        }
+
+        os_type = "cloud_init"
+        ciupgrade  = true
+        ipconfig0  = ""
+        nameserver = ""
+        searchdomain = "local"
+        skip_ipv6  = true
+        ciuser = "admin"
+        cipassword = "secret"
+        sshkeys = <<EOF
+            # PASTE SSH KEY
+        EOF
+}
