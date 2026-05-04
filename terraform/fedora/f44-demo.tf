@@ -1,47 +1,47 @@
 resource "proxmox_vm_qemu" "f44_se_0" {
-        name = "f44-se-0"
+        name = var.name 
         description = "Fedora Server 44"
-        vmid = 300
-        target_node = "hades"
+        vmid = var.vmid
+        target_node = var.target_node
 
-        bios = "ovmf"
-        agent = 1
-        clone = "f44-se"
-        memory = 4092
-        scsihw = "virtio-scsi-pci"
-        automatic_reboot = true
+        bios = var.bios
+        agent = var.agent
+        clone = var.clone
+        memory = var.memory
+        scsihw = var.scsihw
+        automatic_reboot = var.auto_reboot
         
         cpu {
-            sockets = 1
-            cores = 4
+            sockets = var.cpu["sockets"]
+            cores = var.cpu["cores"]
         }
 
         network {
             id = 0
             model  = "virtio"
-            bridge = "vmbr0"
+            bridge = var.network[0]
         }
         
         disks {
             scsi {
                 scsi0 {
                     disk {
-                        storage = "nas"
-                        size    = "50G" 
+                        storage = var.storage
+                        size    = var.disk_size
                     }
                 }
             }
             ide {
                 ide0 {
                     cloudinit {
-                        storage = "nas"
+                        storage = var.storage
                     }
                 }
             }
         }
 
         efidisk {
-            storage = "nas"
+            storage = var.storage
             efitype = "4m" 
         }
 
