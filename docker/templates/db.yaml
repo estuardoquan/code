@@ -8,4 +8,10 @@ services:
             MONGO_PASS: $DB_MONGO_PASS
             MONGO_DBNAME: $DB_MONGO_DBNAME
             MONGO_AUTHSOURCE: $DB_MONGO_AUTHSOURCE
+    mysql:
+        image: mysql:latest
+        environment:
+            MYSQL_DATABASE: $DB_MYSQL_DATABASE
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_ROOT_PASSWORD: $DB_MYSQL_PASSWORD
 

@@ -9,7 +9,7 @@
       other:
           - 'client_max_body_size 0'
       locations:
-          - path: /$USER
+          - path: /
             type: try_files
             value: $uri $uri/ /index.php?$query_string
             other:
@@ -22,6 +22,10 @@
             other:
                 - 'access_log off'
                 - 'log_not_found off'
+          - path: ~ ^/(@vite|resources|node_modules)
+            type: proxy_pass
+            value: https://vite:5173
+            include: /etc/nginx/includes/default.proxy.conf
           - path: /robots.txt
             other:
                 - 'access_log off'

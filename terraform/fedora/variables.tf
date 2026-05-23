@@ -65,7 +65,7 @@ variable "storage" {
 
 variable "disk_size" {
   type = string
-  default = "10GB"
+  default = "32G"
 }
 
 variable "ipconfig" {

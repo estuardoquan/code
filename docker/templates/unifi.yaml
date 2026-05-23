@@ -11,8 +11,8 @@ services:
             MONGO_PORT: $CONSOLE_MONGO_PORT
             MONGO_DBNAME: $CONSOLE_MONGO_DBNAME
             MONGO_AUTHSOURCE: $CONSOLE_MONGO_AUTHSOURCE
-            MEM_LIMIT: $CONSOLE_MEM_LIMIT
-            MEM_STARTUP: $CONSOLE_MEM_STARTUP
+            # MEM_LIMIT: $CONSOLE_MEM_LIMIT
+            # MEM_STARTUP: $CONSOLE_MEM_STARTUP
             # MONGO_TLS: $CONSOLE_MONGO_TLS
     db:
         image: mongo:latest

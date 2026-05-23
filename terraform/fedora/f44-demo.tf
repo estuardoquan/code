@@ -47,6 +47,9 @@ resource "proxmox_vm_qemu" "f44_se_0" {
 
         os_type = "cloud_init"
         ciupgrade  = true
+
+        ipconfig0 = "ip=10.30.0.216/24,gw=10.30.0.254"
+        nameserver = "10.30.0.254"
         skip_ipv6  = true
 
         cicustom = "user=nas:snippets/f44-user.yaml"

@@ -1,6 +1,6 @@
 build {
     source "proxmox-iso.image" {
-        name         = "f43"
+        name         = "f44"
         boot_command = var.boot_cmd_fedora
         boot_wait    = var.boot_wait
         
@@ -18,15 +18,15 @@ build {
         }
         
         boot_iso {
-            iso_checksum = var.iso_checksum["fedora43"]
+            iso_checksum = var.iso_checksum["fedora44"]
             iso_download_pve = var.iso_download_pve
             iso_storage_pool = var.iso_storage_pool
-            iso_url = var.iso_url["fedora43"]
+            iso_url = var.iso_url["fedora44"]
             unmount = var.unmount_iso
         }
         
-        template_name = "f43-clean"
-        vm_id         = var.vm_id["fedora43"]
+        template_name = "f44-se"
+        vm_id         = var.vm_id["fedora44"]
   }
 
   provisioner "shell" {

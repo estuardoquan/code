@@ -13,5 +13,5 @@ services:
         image: ubuntu/bind9:latest
         environment:
             BIND9_USER: $BIND9_USER
-
+        working_dir: /etc/bind
 

@@ -1,9 +1,20 @@
 #!/bin/bash
 set -euxo pipefail
 
-# clean image identifiers
+# clean cloud-init state
 cloud-init clean --machine-id --seed
-rm /etc/hostname /etc/ssh/ssh_host_* /var/lib/systemd/random-seed
+rm -rf /var/lib/cloud/instances/* /var/lib/cloud/data/*
+
+# remove image identifiers
+rm -f /etc/hostname /etc/ssh/ssh_host_* /var/lib/systemd/random-seed
+truncate -s 0 /etc/machine-id
+
+# clear running kernel hostname so clones start fresh
+hostnamectl set-hostname localhost.localdomain
+
+# wipe authorized keys for root
 truncate -s 0 /root/.ssh/authorized_keys
-sed -i 's/^#PasswordAuthentication\\ yes/PasswordAuthentication\\ no/' /etc/ssh/sshd_config
-sed -i 's/^#PermitRootLogin\\ prohibit-password/PermitRootLogin\\ no/' /etc/ssh/sshd_config
+
+# harden sshd
+sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
