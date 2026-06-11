@@ -1,6 +1,8 @@
 #cloud-config
-hostname: f44-se-0
+hostname: f44-se-300
+fqdn: f44-se-300
 manage_etc_hosts: true
+ssh_pwauth: true
 users:
   - name: admin
     groups: [wheel, docker]
@@ -9,17 +11,13 @@ users:
     lock_passwd: false
     passwd: $6$dZjQf8BlA40XhNyr$bhBWYFn/tspIveCG.UF.MpcN.LOqy2fR17s4fi4MMxwtGQBNK8vRJusCEpbhYR9vJS8mFMOtEUARYcUAjcw9j/
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILwBDKGqaGdrV4QPmpDPlryU+FxL270X/AGR69/t/SwN admin@zethus.pi.local
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDjJezd+3j3CZVTSoihVSSMRfkLE3zx25nqGd+K/gGGS admin@f44-se-0.local
 package_update: true
 package_upgrade: true
 runcmd:
+  - git clone https://github.com/estuardoquan/.dotfiles.git /home/admin/dot-files
   - mkdir -p /home/admin/.config
-  -
-  - git clone https://github.com/estuardoquan/.dotfiles.git /home/admin/.dotfiles
-  - stow -d /home/admin/.dotfiles -t /home/admin .
+  - stow -d /home/admin/dot-files -t /home/admin .
   - chown -R admin:admin /home/admin
-  - hostnamectl set-hostname f44-se-0.vm.local
-  - systemctl reboot 
-  - /home/admin/bin/ddns.sh | nsupdate -k /var/tmp/acme-update.key
   - usermod -aG docker admin
-  - systemctl enable --now docker
+  - systemctl reboot 

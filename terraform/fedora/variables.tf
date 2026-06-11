@@ -1,6 +1,6 @@
 variable "name" {
   type = string
-  default = "f44-se-0"
+  default = "fedora"
 }
 
 variable "vmid" {

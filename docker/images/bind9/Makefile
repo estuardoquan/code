@@ -1,13 +1,11 @@
 AUTHOR=dqio
-IMAGE=minio
+IMAGE=bind9
 
 TAG=${AUTHOR}/${IMAGE}
 
 all: docker-build
 
-docker-build: docker-build-minio
+docker-build: docker-build-bind9
 
-docker-build-minio:
+docker-build-bind9:
 	docker build -t ${TAG}:latest ./
-
-

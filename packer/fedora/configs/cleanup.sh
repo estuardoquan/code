@@ -9,12 +9,9 @@ rm -rf /var/lib/cloud/instances/* /var/lib/cloud/data/*
 rm -f /etc/hostname /etc/ssh/ssh_host_* /var/lib/systemd/random-seed
 truncate -s 0 /etc/machine-id
 
-# clear running kernel hostname so clones start fresh
-hostnamectl set-hostname localhost.localdomain
-
 # wipe authorized keys for root
 truncate -s 0 /root/.ssh/authorized_keys
 
 # harden sshd
-sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config

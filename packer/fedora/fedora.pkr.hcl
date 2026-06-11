@@ -31,7 +31,9 @@ build {
 
   provisioner "shell" {
         scripts = concat(var.user_scripts, [
+          "configs/init.sh",
           "configs/custom.sh",
+          "configs/install-nsupdate-key.sh",
           "configs/cleanup.sh",
         ])
   }
