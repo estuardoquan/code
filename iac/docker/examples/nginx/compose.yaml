@@ -1,0 +1,14 @@
+networks:
+    local:
+        driver: bridge
+services:
+    server:
+        extends:
+            file: $TEMPLATE_NGINX_SERVER
+            service: server
+        volumes:
+            - ./servers.yaml:/etc/nginx/yaml/servers.yaml
+        networks:
+            - local
+        restart: unless-stopped
+

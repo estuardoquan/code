@@ -1,0 +1,4 @@
+services:
+    tor:
+        image: dqio/tor:latest
+

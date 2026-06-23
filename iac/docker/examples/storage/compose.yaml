@@ -1,0 +1,18 @@
+networks:
+    local:
+        driver: bridge
+volumes:
+    data:
+        driver: local
+services:
+    minio:
+        extends:
+            file: $TEMPLATE_STORAGE_MINIO
+            service: minio
+        volumes:
+            - data:/data
+        user: $STORAGE_MINIO_USER
+        networks:
+            - local 
+        restart: unless-stopped
+    

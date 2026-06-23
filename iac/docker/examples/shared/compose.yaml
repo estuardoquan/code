@@ -1,0 +1,17 @@
+networks:
+    local:
+        driver: bridge
+volumes:
+    data:
+        driver: local
+services:
+    webdav:
+        extends:
+            file: $TEMPLATE_SHARED_WEBDAV
+            service: webdav
+        volumes:
+            - data:/data
+        networks:
+            - local
+        restart: unless-stopped
+

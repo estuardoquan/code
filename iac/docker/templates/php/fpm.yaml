@@ -1,0 +1,10 @@
+services:
+    fastcgi:
+        image: dqio/servers:latest
+        environment:
+            SERVER_YAML: $FASTCGI_SERVER_WATCH_CRT 
+            SERVER_WATCH_CRT: ${FASTCGI_SERVER_WATCH_CRT:-"/var/local/step"}
+    phpfpm:
+        image: dqio/php:latest
+    phpfpm-dev:
+        image: dqio/php:dev

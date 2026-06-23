@@ -1,0 +1,17 @@
+services:
+    console:
+        image: lscr.io/linuxserver/unifi-network-application:latest
+        environment:
+            PUID: $UNIFI_CONSOLE_PUID
+            PGID: $UNIFI_CONSOLE_PGID
+            TZ: $UNIFI_CONSOLE_TZ
+            MONGO_USER: $UNIFI_CONSOLE_MONGO_USER
+            MONGO_PASS: $UNIFI_CONSOLE_MONGO_PASS
+            MONGO_HOST: $UNIFI_CONSOLE_MONGO_HOST
+            MONGO_PORT: $UNIFI_CONSOLE_MONGO_PORT
+            MONGO_DBNAME: $UNIFI_CONSOLE_MONGO_DBNAME
+            MONGO_AUTHSOURCE: $UNIFI_CONSOLE_MONGO_AUTHSOURCE
+            # MEM_LIMIT: $UNIFI_CONSOLE_MEM_LIMIT
+            # MEM_STARTUP: $UNIFI_CONSOLE_MEM_STARTUP
+            # MONGO_TLS: $UNIFI_CONSOLE_MONGO_TLS
+

@@ -1,0 +1,12 @@
+services:
+    pihole:
+        image: pihole/pihole:latest
+        environment:
+            TZ: $DNS_PIHOLE_TZ
+            FTLCONF_webserver_api_password: $DNS_PIHOLE_FTLCONF_webserver_api_password
+            FTLCONF_dns_listeningMode: $DNS_PIHOLE_FTLCONF_dns_listeningMode
+        cap_add:
+            - NET_ADMIN
+            - SYS_TIME
+            - SYS_NICE
+

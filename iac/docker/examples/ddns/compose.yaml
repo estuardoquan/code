@@ -1,0 +1,11 @@
+networks:
+    local:
+        driver: bridge
+services:
+    noip:
+        extends:
+            file: $TEMPLATE_DDNS_NOIP
+            service: noip
+        networks:
+            - local 
+        restart: unless-stopped

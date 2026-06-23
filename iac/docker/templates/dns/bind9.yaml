@@ -1,0 +1,7 @@
+services:
+    bind9:
+        image: ubuntu/bind9:latest
+        environment:
+            BIND9_USER: $DNS_BIND9_USER
+        working_dir: /etc/bind
+

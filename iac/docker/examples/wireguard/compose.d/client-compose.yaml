@@ -1,0 +1,22 @@
+networks:
+    local:
+        driver: bridge
+services:
+    client:
+        extends:
+            file: $TEMPLATE_WG_CLIENT
+            service: client
+        volumes:
+            - config:/config/wg_confs/
+        networks:
+            - local
+        ports:
+            - 127.0.0.1:1080:1080
+        restart: unless-stopped
+    socks5:
+        extends:
+            file: $TEMPLATE_SOCKS5_DANTE
+            service: dante
+        network_mode: "service:client" 
+        depends_on:
+            - client

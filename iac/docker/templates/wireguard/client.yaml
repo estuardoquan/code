@@ -1,0 +1,20 @@
+services:
+    client:
+        image: lscr.io/linuxserver/wireguard:latest
+        environment:
+            PUID: $WG_CLIENT_PUID
+            PGID: $WG_CLIENT_PGID
+            TZ: $WG_CLIENT_TZ
+            SERVERURL: $WG_CLIENT_SERVERURL
+            SERVERPORT: $WG_CLIENT_SERVERPORT
+            PEERDNS: $WG_CLIENT_PEERDNS
+            INTERNAL_SUBNET: $WG_CLIENT_INTERNAL_SUBNET
+            ALLOWEDIPS: $WG_CLIENT_ALLOWEDIPS
+            PERSISTENTKEEPALIVE_PEERS: $WG_CLIENT_PERSISTENTKEEPALIVE_PEERS
+            LOG_CONFS: $WG_CLIENT_LOG_CONFS
+        sysctls:
+            - net.ipv4.ip_forward=1
+            - net.ipv4.conf.all.src_valid_mark=1
+        cap_add:
+            - NET_ADMIN
+            - SYS_MODULE

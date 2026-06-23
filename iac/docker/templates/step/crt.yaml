@@ -1,0 +1,15 @@
+services:
+    crt:
+        image: dqio/crtpatch:latest
+        environment:
+            STEP_INIT_NAME: $STEP_CRT_STEP_INIT_NAME
+            STEP_INIT_DNS: $STEP_CRT_STEP_INIT_DNS
+            STEP_INIT_SAN: $STEP_CRT_STEP_INIT_SAN
+            STEP_CA_URL: $STEP_CRT_STEP_CA_URL
+            STEP_FINGERPRINT: $STEP_CRT_STEP_FINGERPRINT
+            STEP_KID: $STEP_CRT_STEP_KID
+            STEP_RENEW_PERIOD: $STEP_CRT_STEP_RENEW_PERIOD
+            STEP_PROVISIONER_PASSWORD_FILE: /run/secrets/provisioner_password
+        secrets:
+            - provisioner_password
+

@@ -1,0 +1,9 @@
+services:
+    ca:
+        image: smallstep/step-ca:latest
+        environment:
+            STEPPATH: $STEP_CA_STEPPATH
+            DOCKER_STEPCA_INIT_NAME: $STEP_CA_DOCKER_STEPCA_INIT_NAME
+            DOCKER_STEPCA_INIT_DNS_NAMES: $STEP_CA_DOCKER_STEPCA_INIT_DNS_NAMES
+            DOCKER_STEPCA_INIT_ADDRESS: $STEP_CA_DOCKER_STEPCA_INIT_ADDRESS
+

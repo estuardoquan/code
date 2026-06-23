@@ -1,0 +1,12 @@
+services:
+    webdav:
+        image: dgraziotin/nginx-webdav-nononsense:latest
+        environment:
+            PUID: $SHARED_WEBDAV_PUID
+            PGID: $SHARED_WEBDAV_PGID
+            WEBDAV_USERNAME: $SHARED_WEBDAV_USERNAME
+            WEBDAV_PASSWORD: $SHARED_WEBDAV_PASSWORD
+            SERVER_NAMES: localhost
+            TIMEOUTS_S: 1200
+            CLIENT_MAX_BODY_SIZE: 1G
+

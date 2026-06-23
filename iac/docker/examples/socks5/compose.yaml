@@ -1,0 +1,18 @@
+networks:
+    local:
+        driver: local 
+services:
+    tor:
+        extends:
+            file: $TEMPLATE_SOCKS5_TOR
+            service: tor
+        networks:
+            - local
+        restart: unless-stopped
+    dante:
+        extends:
+            file: $TEMPLATE_SOCKS5_DANTE
+            service: dante
+        networks:
+            - local
+        restart: unless-stopped

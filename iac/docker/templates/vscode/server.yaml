@@ -1,0 +1,12 @@
+services:
+    server:
+        image: lscr.io/linuxserver/code-server:latest
+        working_dir: /config/workspace
+        environment:
+            PUID: $VSCODE_SERVER_PUID
+            PGID: $VSCODE_SERVER_PGID
+            TZ: $VSCODE_SERVER_TZ
+            HASHED_PASSWORD: $VSCODE_SERVER_HASHED_PASSWORD
+            SUDO_PASSWORD_HASH: $VSCODE_SERVER_SUDO_PASSWORD_HASH
+            DEFAULT_WORKSPACE: $VSCODE_SERVER_DEFAULT_WORKSPACE
+

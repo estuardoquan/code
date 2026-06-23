@@ -1,0 +1,5 @@
+services:
+    corosync:
+        image: dqio/corosync:latest
+        # environment:
+
