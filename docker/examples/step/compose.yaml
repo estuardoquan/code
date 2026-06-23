@@ -8,11 +8,11 @@ volumes:
         driver: local
 secrets:
     provisioner_password:
-        file: $PROVISIONER_PASSWORD_FILE
+        file: $STEP_PROVISIONER_PASSWORD_FILE
 services:
     ca:
         extends:
-            file: $TEMPLATE_STEP
+            file: $TEMPLATE_STEP_CA
             service: ca
         volumes:
             - ca:$CA_STEPPATH
@@ -21,7 +21,7 @@ services:
         restart: unless-stopped
     crt:
         extends:
-            file: $TEMPLATE_STEP
+            file: $TEMPLATE_STEP_CRT
             service: crt
         volumes:
             - crt_jwt:/var/local/step

@@ -7,8 +7,8 @@ volumes:
 services:
     app:
         extends:
-            file: $TEMPLATE_VSCODE
-            service: code_server
+            file: $TEMPLATE_VSCODE_SERVER
+            service: server
         volumes:
             - config:/config
         networks:

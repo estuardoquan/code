@@ -7,8 +7,8 @@ volumes:
 services:
     certbot:
         extends:
-            file: $TEMPLATE_LETSENCRYPT
-            service: certbot_route53
+            file: $TEMPLATE_LE_ROUTE53
+            service: route53
         volumes:
             - certbot:/etc/letsencrypt
         networks:

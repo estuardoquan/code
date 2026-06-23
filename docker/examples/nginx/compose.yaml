@@ -4,8 +4,8 @@ networks:
 services:
     server:
         extends:
-            file: $TEMPLATE_SERVER
-            service: nginx
+            file: $TEMPLATE_NGINX_SERVER
+            service: server
         volumes:
             - ./servers.yaml:/etc/nginx/yaml/servers.yaml
         networks:

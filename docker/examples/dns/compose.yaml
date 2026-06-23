@@ -13,7 +13,7 @@ volumes:
 services:
     bind9:
         extends:
-            file: $TEMPLATE_DNS
+            file: $TEMPLATE_DNS_BIND9
             service: bind9 
         volumes:
             - bind9_src:/etc/bind
@@ -24,7 +24,7 @@ services:
         restart: unless-stopped
     pihole:
         extends:
-            file: $TEMPLATE_DNS
+            file: $TEMPLATE_DNS_PIHOLE
             service: pihole
         volumes:
             - pihole:/etc/pihole

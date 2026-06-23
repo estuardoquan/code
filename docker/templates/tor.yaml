@@ -1,4 +1,0 @@
-services:
-    socks5:
-        image: dqio/socks5:latest
-

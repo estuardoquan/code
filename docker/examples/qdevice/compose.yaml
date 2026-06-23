@@ -7,7 +7,7 @@ volumes:
 services:
     corosync:
         extends:
-            file: $TEMPLATE_QDEVICE
+            file: $TEMPLATE_QDEVICE_COROSYNC
             service: corosync
         volumes:
             - corosync:/etc/corosync/qnetd
